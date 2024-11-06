@@ -1,45 +1,28 @@
-import { useEffect } from 'react';
-import { Typography, Container, Button, Box } from '@mui/material';
-import { Link } from 'react-router-dom';
-import axios from '../axiosConfig';
+import { Typography, Container, Box } from '@mui/material';
+import AppBar from '../components/AppBar/AppBar';
+import Footer from '../components/Footer/Footer';
 
 function Home() {
-  useEffect(() => {
-    axios.get('/user');
-  }, []);
-
-  
   return (
-    <Container>
-      <Typography variant="h2" gutterBottom>
-        Welcome to My Application!
-      </Typography>
-      <Typography variant="h5" gutterBottom>
-        Explore the features and functionalities.
-      </Typography>
-      <Box>
-        <Button component={Link} to="/login" variant="contained" color="primary"
-          sx={{
-            margin: '10px',
-            '&:hover': {
-              color: 'white',
-            },
-          }}
-        >
-          Login
-        </Button>
-        <Button component={Link} to="/register" variant="outlined" color="primary"
-          sx={{
-            margin: '10px',
-            color: 'primary',
-            '&:hover': {
-              color: 'primary',
-            },
-          }}
-        >
-          Register
-        </Button>
+    <Container disableGutters maxWidth={false} sx={{ height: '100vh' }}>
+      <AppBar page='home' />
+      <Box sx={{
+        width: '100%',
+        height: 'calc(100vh - 58px - 58px)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center'
+      }}>
+        <Typography variant="h2" gutterBottom>
+          Welcome to My Application!
+        </Typography>
+        <Typography variant="h5" gutterBottom>
+          Explore the features and functionalities.
+        </Typography>
       </Box>
+      <Footer />
     </Container>
   )
 }
